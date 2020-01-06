@@ -30,7 +30,7 @@ apply plugin: 'org.springframework.boot'
 
 // 打包的类型为 jar，并指定了生成的打包的文件名称和版本
 jar {
-	baseName = 'blog-blog'
+	baseName = 'new-star-blog'
 	version = '1.0.0'
 }
 //指定编译 .java文件的JDK版本
