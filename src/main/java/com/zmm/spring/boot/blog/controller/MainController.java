@@ -13,6 +13,7 @@ import com.zmm.spring.boot.blog.domain.Authority;
 import com.zmm.spring.boot.blog.domain.User;
 import com.zmm.spring.boot.blog.service.AuthorityService;
 import com.zmm.spring.boot.blog.service.UserService;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author 1805783671
@@ -34,18 +35,18 @@ public class MainController {
 	
 	
 	@GetMapping("/")
-	public String root() {
-		return "redirect:index";
+	public ModelAndView root() {
+		return new ModelAndView("index");
 	}
 	
 	@GetMapping("/index")
-	public String index() {
-		return "redirect:blogs";
+	public ModelAndView index() {
+		return new ModelAndView("blogs");
 	}
 	
 	@GetMapping("/login")
-	public String login() {
-		return "login";
+	public ModelAndView login() {
+		return new ModelAndView("login");
 	}
 	
 	@GetMapping("/login-error")
