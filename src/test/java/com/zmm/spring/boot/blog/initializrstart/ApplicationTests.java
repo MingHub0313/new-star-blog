@@ -1,3 +1,4 @@
+/*
 package com.zmm.spring.boot.blog.initializrstart;
 
 import org.junit.Test;
@@ -15,3 +16,4 @@ public class ApplicationTests {
 
 }
 
+*/
