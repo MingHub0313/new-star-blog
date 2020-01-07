@@ -24,6 +24,7 @@ import com.zmm.spring.boot.blog.service.CatalogService;
 import com.zmm.spring.boot.blog.util.ConstraintViolationExceptionHandler;
 import com.zmm.spring.boot.blog.vo.CatalogVO;
 import com.zmm.spring.boot.blog.vo.Response;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author 1805783671
@@ -53,7 +54,7 @@ public class CatalogController {
 	 * @return
 	 */
 	@GetMapping
-	public String listComments(@RequestParam(value="username",required=true) String username, Model model) {
+	public ModelAndView listComments(@RequestParam(value="username",required=true) String username, Model model) {
 		User user = (User)userDetailsService.loadUserByUsername(username);
 		List<Catalog> catalogs = catalogService.listCatalogs(user);
 
@@ -72,7 +73,8 @@ public class CatalogController {
 		
 		model.addAttribute("isCatalogsOwner", isOwner);
 		model.addAttribute("catalogs", catalogs);
-		return "userspace/u :: #catalogRepleace";
+		//return "/userspace/u :: #catalogRepleace";
+		return new ModelAndView( "userspace/u :: #catalogRepleace");
 	}
 	
 	/**
@@ -142,10 +144,11 @@ public class CatalogController {
 	 * @return
 	 */
 	@GetMapping("/edit")
-	public String getCatalogEdit(Model model) {
+	public ModelAndView getCatalogEdit(Model model) {
 		Catalog catalog = new Catalog(null, null);
 		model.addAttribute("catalog",catalog);
-		return "userspace/catalogedit";
+		//return "/userspace/catalogedit";
+		return new ModelAndView("userspace/catalogedit");
 	}
 	
 	/**
@@ -159,10 +162,11 @@ public class CatalogController {
 	 * @return
 	 */
 	@GetMapping("/edit/{id}")
-	public String getCatalogById(@PathVariable("id") Long id, Model model) {
+	public ModelAndView getCatalogById(@PathVariable("id") Long id, Model model) {
 		Catalog catalog = catalogService.getCatalogById(id);
 		model.addAttribute("catalog",catalog);
-		return "userspace/catalogedit";
+		//return "/userspace/catalogedit";
+		return new ModelAndView("userspace/catalogedit");
 	}
 
 }

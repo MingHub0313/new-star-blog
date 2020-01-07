@@ -23,6 +23,8 @@ import com.zmm.spring.boot.blog.service.BlogService;
 import com.zmm.spring.boot.blog.service.CommentService;
 import com.zmm.spring.boot.blog.util.ConstraintViolationExceptionHandler;
 import com.zmm.spring.boot.blog.vo.Response;
+import org.springframework.web.servlet.ModelAndView;
+
 /**
  * @author 1805783671
  * @version CommentController-1.0
@@ -50,7 +52,7 @@ public class CommentController {
 	 * @return
 	 */
 	@GetMapping
-	public String listComments(@RequestParam(value="blogId",required=true) Long blogId, Model model) {
+	public ModelAndView listComments(@RequestParam(value="blogId",required=true) Long blogId, Model model) {
 		Blog blog = blogService.getBlogById(blogId);
 		List<Comment> comments = blog.getComments();
 		
@@ -66,7 +68,8 @@ public class CommentController {
 		
 		model.addAttribute("commentOwner", commentOwner);
 		model.addAttribute("comments", comments);
-		return "userspace/blog :: #mainContainerRepleace";
+		//return "/userspace/blog :: #mainContainerRepleace";
+		return new ModelAndView("userspace/blog :: #mainContainerRepleace");
 	}
 	
 	/**

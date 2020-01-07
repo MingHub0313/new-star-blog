@@ -78,10 +78,11 @@ public class UserspaceController {
 	 * @return
 	 */
 	@GetMapping("/{username}")
-	public String userSpace(@PathVariable("username") String username, Model model) {
+	public ModelAndView userSpace(@PathVariable("username") String username, Model model) {
 		User user = (User) userDetailsService.loadUserByUsername(username);
 		model.addAttribute("user", user);
-		return "redirect:u/" + username + "/blogs";
+		//return "redirect:/u/" + username + "/blogs";
+		return new ModelAndView("redirect:/u/" + username + "/blogs");
 	}
 
 	/**
@@ -108,6 +109,7 @@ public class UserspaceController {
 		model.addAttribute("user", user);
 		// 文件服务器的地址返回给客户端
 		model.addAttribute("fileServerUrl", fileServerUrl);
+		//return new ModelAndView("/userspace/profile", "userModel", model);
 		return new ModelAndView("userspace/profile", "userModel", model);
 	}
 
@@ -123,7 +125,7 @@ public class UserspaceController {
 	 */
 	@PostMapping("/{username}/profile")
 	@PreAuthorize("authentication.name.equals(#username)")
-	public String saveProfile(@PathVariable("username") String username, User user) {
+	public ModelAndView saveProfile(@PathVariable("username") String username, User user) {
 		// 原始用户信息
 		User originalUser = userService.getUserById(user.getId());
 		originalUser.setEmail(user.getEmail());
@@ -139,7 +141,8 @@ public class UserspaceController {
 		}
 
 		userService.saveOrUpdateUser(originalUser);
-		return "redirect:u/" + username + "/profile";
+		//return "redirect:/u/" + username + "/profile";
+		return new ModelAndView("redirect:u/" + username + "/profile");
 	}
 
 	/**
@@ -199,7 +202,7 @@ public class UserspaceController {
 	 * @return
 	 */
 	@GetMapping("/{username}/blogs")
-	public String listBlogsByOrder(@PathVariable("username") String username,
+	public ModelAndView listBlogsByOrder(@PathVariable("username") String username,
 			@RequestParam(value = "order", required = false, defaultValue = "new") String order,
 			@RequestParam(value = "catalog", required = false) Long catalogId,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
@@ -235,7 +238,7 @@ public class UserspaceController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("page", page);
 		model.addAttribute("blogList", list);
-		return (async == true ? "userspace/u :: #mainContainerRepleace" : "userspace/u");
+		return new ModelAndView((async == true ? "userspace/u :: #mainContainerRepleace" : "userspace/u"));
 	}
 
 	/**
@@ -248,7 +251,7 @@ public class UserspaceController {
 	 * @return
 	 */
 	@GetMapping("/{username}/blogs/{id}")
-	public String getBlogById(@PathVariable("username") String username, @PathVariable("id") Long id, Model model) {
+	public ModelAndView getBlogById(@PathVariable("username") String username, @PathVariable("id") Long id, Model model) {
 		User principal = null;
 		Blog blog = blogService.getBlogById(id);
 
@@ -284,7 +287,7 @@ public class UserspaceController {
 		//判断当前用户是否对博客点赞
 		model.addAttribute("currentVote", currentVote);
 
-		return "userspace/blog";
+		return new ModelAndView("userspace/blog");
 	}
 
 	/**
