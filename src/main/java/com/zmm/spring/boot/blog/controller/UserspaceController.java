@@ -81,7 +81,7 @@ public class UserspaceController {
 	public String userSpace(@PathVariable("username") String username, Model model) {
 		User user = (User) userDetailsService.loadUserByUsername(username);
 		model.addAttribute("user", user);
-		return "redirect:/u/" + username + "/blogs";
+		return "redirect:u/" + username + "/blogs";
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class UserspaceController {
 		model.addAttribute("user", user);
 		// 文件服务器的地址返回给客户端
 		model.addAttribute("fileServerUrl", fileServerUrl);
-		return new ModelAndView("/userspace/profile", "userModel", model);
+		return new ModelAndView("userspace/profile", "userModel", model);
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class UserspaceController {
 		}
 
 		userService.saveOrUpdateUser(originalUser);
-		return "redirect:/u/" + username + "/profile";
+		return "redirect:u/" + username + "/profile";
 	}
 
 	/**
@@ -157,7 +157,7 @@ public class UserspaceController {
 	public ModelAndView avatar(@PathVariable("username") String username, Model model) {
 		User user = (User) userDetailsService.loadUserByUsername(username);
 		model.addAttribute("user", user);
-		return new ModelAndView("/userspace/avatar", "userModel", model);
+		return new ModelAndView("userspace/avatar", "userModel", model);
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class UserspaceController {
 		model.addAttribute("keyword", keyword);
 		model.addAttribute("page", page);
 		model.addAttribute("blogList", list);
-		return (async == true ? "/userspace/u :: #mainContainerRepleace" : "/userspace/u");
+		return (async == true ? "userspace/u :: #mainContainerRepleace" : "userspace/u");
 	}
 
 	/**
@@ -284,7 +284,7 @@ public class UserspaceController {
 		//判断当前用户是否对博客点赞
 		model.addAttribute("currentVote", currentVote);
 
-		return "/userspace/blog";
+		return "userspace/blog";
 	}
 
 	/**
@@ -305,7 +305,7 @@ public class UserspaceController {
 		model.addAttribute("blog", new Blog(null, null, null));
 		// 文件服务器的地址返回给客户端
 		model.addAttribute("fileServerUrl", fileServerUrl);
-		return new ModelAndView("/userspace/blogedit", "blogModel", model);
+		return new ModelAndView("userspace/blogedit", "blogModel", model);
 	}
 
 	/**
@@ -329,7 +329,7 @@ public class UserspaceController {
 		model.addAttribute("blog", blogService.getBlogById(id));
 		// 文件服务器的地址返回给客户端
 		model.addAttribute("fileServerUrl", fileServerUrl);
-		return new ModelAndView("/userspace/blogedit", "blogModel", model);
+		return new ModelAndView("userspace/blogedit", "blogModel", model);
 	}
 
 	/**

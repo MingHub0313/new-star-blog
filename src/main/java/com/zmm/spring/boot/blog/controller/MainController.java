@@ -63,13 +63,14 @@ public class MainController {
 	}
 	
 	@PostMapping("/register")
-	public String register(User user) {
+	public ModelAndView register(User user) {
 		List<Authority> authorities = new ArrayList<>();
 		//默认注册是博主
 		authorities.add(authorityService.getAuthorityById(ROLE_USER_AUTHORITY_ID));
 		user.setAuthorities(authorities);
 		userService.saveOrUpdateUser(user);
-		return "redirect:/login";
+		return new ModelAndView("redirect:login");
+		//return "redirect:/login";
 	}
 	
 	@GetMapping("/search")
