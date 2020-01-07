@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +12,7 @@ import com.zmm.spring.boot.blog.domain.Authority;
 import com.zmm.spring.boot.blog.domain.User;
 import com.zmm.spring.boot.blog.service.AuthorityService;
 import com.zmm.spring.boot.blog.service.UserService;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author 1805783671
@@ -22,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @Desc主页控制器
  *
  */
-@Controller
+@RestController
 public class MainController {
 	
 	private static final Long ROLE_USER_AUTHORITY_ID = 2L;
