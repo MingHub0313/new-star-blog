@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +13,7 @@ import com.zmm.spring.boot.blog.domain.Authority;
 import com.zmm.spring.boot.blog.domain.User;
 import com.zmm.spring.boot.blog.service.AuthorityService;
 import com.zmm.spring.boot.blog.service.UserService;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author 1805783671
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Desc主页控制器
  *
  */
-@RestController
+@Controller
 public class MainController {
 	
 	private static final Long ROLE_USER_AUTHORITY_ID = 2L;
@@ -33,17 +34,17 @@ public class MainController {
 	private AuthorityService  authorityService;
 	
 	
-	@GetMapping("/")
+	@RequestMapping("/")
 	public String root() {
 		return "redirect:/index";
 	}
 	
-	@GetMapping("/index")
+	@RequestMapping("/index")
 	public String index() {
 		return "redirect:/blogs";
 	}
 	
-	@GetMapping("/login")
+	@RequestMapping("/login")
 	public String login() {
 		return "login";
 	}
