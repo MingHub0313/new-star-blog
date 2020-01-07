@@ -35,18 +35,18 @@ public class MainController {
 	
 	
 	@GetMapping("/")
-	public ModelAndView root() {
-		return new ModelAndView("index");
+	public String root() {
+		return "redirect:/index";
 	}
 	
 	@GetMapping("/index")
-	public ModelAndView index() {
-		return new ModelAndView("blogs");
+	public String index() {
+		return "redirect:/blogs";
 	}
 	
 	@GetMapping("/login")
-	public ModelAndView login() {
-		return new ModelAndView("login");
+	public String login() {
+		return "login";
 	}
 	
 	@GetMapping("/login-error")
