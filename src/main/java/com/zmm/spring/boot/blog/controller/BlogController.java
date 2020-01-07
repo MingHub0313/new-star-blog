@@ -26,7 +26,7 @@ import com.zmm.spring.boot.blog.vo.TagVO;
  * @Desc Blog控制器
  */
 @Controller
-@RequestMapping("/blogs")
+@RequestMapping(value = {"/","/index","/blogs"})
 public class BlogController {
 	
 	@Autowired

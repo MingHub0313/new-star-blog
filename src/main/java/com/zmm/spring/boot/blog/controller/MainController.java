@@ -35,15 +35,15 @@ public class MainController {
 	private AuthorityService  authorityService;
 	
 	
-	@RequestMapping("/")
+	/*@RequestMapping("/")
 	public ModelAndView root() {
 		return new ModelAndView("redirect:index");
-	}
+	}*/
 	
-	@RequestMapping("/index")
+	/*@RequestMapping("/index")
 	public ModelAndView index() {
 		return new ModelAndView("redirect:blogs");
-	}
+	}*/
 	
 	@RequestMapping("/login")
 	public String login() {
