@@ -18,6 +18,7 @@ import com.zmm.spring.boot.blog.domain.User;
 import com.zmm.spring.boot.blog.domain.es.EsBlog;
 import com.zmm.spring.boot.blog.service.EsBlogService;
 import com.zmm.spring.boot.blog.vo.TagVO;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author 1805783671
@@ -51,7 +52,7 @@ public class BlogController {
 	 * @return
 	 */
     @GetMapping
-    public String listEsBlog(
+    public ModelAndView listEsBlog(
             @RequestParam(value="order",required=false,defaultValue="new") String order,
             @RequestParam(value="keyword",required=false,defaultValue="" ) String keyword,
             @RequestParam(value="async",required=false) boolean async,
@@ -102,7 +103,7 @@ public class BlogController {
             model.addAttribute("users", users);
         }
 
-        return (async==true?"/index :: #mainContainerRepleace":"/index");
+        return new ModelAndView((async==true?"/index :: #mainContainerRepleace":"/index"));
     }
 	
 }
