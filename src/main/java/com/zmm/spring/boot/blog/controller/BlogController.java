@@ -103,7 +103,7 @@ public class BlogController {
             model.addAttribute("users", users);
         }
 
-        return new ModelAndView((async==true?"/index :: #mainContainerRepleace":"/index"));
+        return new ModelAndView((async==true?"index :: #mainContainerRepleace":"index"));
     }
 	
 }
