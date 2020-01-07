@@ -14,6 +14,7 @@ import com.zmm.spring.boot.blog.domain.User;
 import com.zmm.spring.boot.blog.service.AuthorityService;
 import com.zmm.spring.boot.blog.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author 1805783671
@@ -35,13 +36,13 @@ public class MainController {
 	
 	
 	@RequestMapping("/")
-	public String root() {
-		return "redirect:/index";
+	public ModelAndView root() {
+		return new ModelAndView("redirect:/index");
 	}
 	
 	@RequestMapping("/index")
-	public String index() {
-		return "redirect:/blogs";
+	public ModelAndView index() {
+		return new ModelAndView("redirect:/blogs");
 	}
 	
 	@RequestMapping("/login")
