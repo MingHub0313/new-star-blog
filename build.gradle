@@ -84,13 +84,3 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
-distributions() {
-	main {
-		baseName = "new-star-blog"
-		contents {
-			from("src/main/resources") {
-				into "templates"
-			}
-		}
-	}
-}
