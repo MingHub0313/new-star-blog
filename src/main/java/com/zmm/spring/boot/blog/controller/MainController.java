@@ -37,12 +37,12 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public ModelAndView root() {
-		return new ModelAndView("redirect:/index");
+		return new ModelAndView("redirect:index");
 	}
 	
 	@RequestMapping("/index")
 	public ModelAndView index() {
-		return new ModelAndView("redirect:/blogs");
+		return new ModelAndView("redirect:blogs");
 	}
 	
 	@RequestMapping("/login")
