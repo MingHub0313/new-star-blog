@@ -18,15 +18,15 @@ $(function() {
         },
         resize:'vertical',
         localStorage:'md',
-        imgurl: 'http://47.111.112.220:8099',
-        base64url: 'http://47.111.112.220:8099'
+        imgurl: 'http://47.111.112.220:8090',
+        base64url: 'http://47.111.112.220:8090'
     });
     
     $('.form-control-chosen').chosen();
  
  	$("#uploadImage").click(function() {
 		$.ajax({
-		    url: 'http://47.111.112.220:8099/upload',
+		    url: 'http://47.111.112.220:8090/upload',
 		    type: 'POST',
 		    cache: false,
 		    data: new FormData($('#uploadformid')[0]),
