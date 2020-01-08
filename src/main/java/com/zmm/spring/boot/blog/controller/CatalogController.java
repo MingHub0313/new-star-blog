@@ -74,7 +74,7 @@ public class CatalogController {
 		model.addAttribute("isCatalogsOwner", isOwner);
 		model.addAttribute("catalogs", catalogs);
 		//return "/userspace/u :: #catalogRepleace";
-		return new ModelAndView( "/userspace/u :: #catalogRepleace");
+		return new ModelAndView( "userspace/u :: #catalogRepleace");
 	}
 	
 	/**
