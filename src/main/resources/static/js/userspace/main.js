@@ -51,7 +51,7 @@ $(function() {
  	    formData.append("file",convertBase64UrlToBlob(base64Codes));  //append函数的第一个参数是后台获取数据的参数名,和html标签的input的name属性功能相同  
 	    //alert(formData.get("file"));
  	    $.ajax({
-		    url: 'http://localhost:8081/upload',
+		    url: 'http://47.111.112.220:8099/upload',
 		    type: 'POST',
 		    cache: false,	//不缓存
 		    data: formData,
