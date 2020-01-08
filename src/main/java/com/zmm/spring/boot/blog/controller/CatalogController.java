@@ -74,7 +74,7 @@ public class CatalogController {
 		model.addAttribute("isCatalogsOwner", isOwner);
 		model.addAttribute("catalogs", catalogs);
 		//return "/userspace/u :: #catalogRepleace";
-		return new ModelAndView( "userspace/u :: #catalogRepleace");
+		return new ModelAndView( "/userspace/u :: #catalogRepleace");
 	}
 	
 	/**
@@ -148,7 +148,7 @@ public class CatalogController {
 		Catalog catalog = new Catalog(null, null);
 		model.addAttribute("catalog",catalog);
 		//return "/userspace/catalogedit";
-		return new ModelAndView("userspace/catalogedit");
+		return new ModelAndView("/userspace/catalogedit");
 	}
 	
 	/**
@@ -166,7 +166,7 @@ public class CatalogController {
 		Catalog catalog = catalogService.getCatalogById(id);
 		model.addAttribute("catalog",catalog);
 		//return "/userspace/catalogedit";
-		return new ModelAndView("userspace/catalogedit");
+		return new ModelAndView("/userspace/catalogedit");
 	}
 
 }

@@ -82,7 +82,7 @@ public class UserspaceController {
 		User user = (User) userDetailsService.loadUserByUsername(username);
 		model.addAttribute("user", user);
 		//return "redirect:/u/" + username + "/blogs";
-		return new ModelAndView("redirect:u/" + username + "/blogs");
+		return new ModelAndView("redirect:/u/" + username + "/blogs");
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class UserspaceController {
 		// 文件服务器的地址返回给客户端
 		model.addAttribute("fileServerUrl", fileServerUrl);
 		//return new ModelAndView("/userspace/profile", "userModel", model);
-		return new ModelAndView("userspace/profile", "userModel", model);
+		return new ModelAndView("/userspace/profile", "userModel", model);
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class UserspaceController {
 
 		userService.saveOrUpdateUser(originalUser);
 		//return "redirect:/u/" + username + "/profile";
-		return new ModelAndView("redirect:u/" + username + "/profile");
+		return new ModelAndView("redirect:/u/" + username + "/profile");
 	}
 
 	/**
