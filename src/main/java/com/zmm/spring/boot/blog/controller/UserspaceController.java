@@ -82,7 +82,7 @@ public class UserspaceController {
 		User user = (User) userDetailsService.loadUserByUsername(username);
 		model.addAttribute("user", user);
 		//return "redirect:/u/" + username + "/blogs";
-		return new ModelAndView("redirect:/u/" + username + "/blogs");
+		return new ModelAndView("redirect:u/" + username + "/blogs");
 	}
 
 	/**
