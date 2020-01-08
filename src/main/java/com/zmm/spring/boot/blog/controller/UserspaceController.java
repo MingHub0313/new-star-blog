@@ -110,7 +110,7 @@ public class UserspaceController {
 		// 文件服务器的地址返回给客户端
 		model.addAttribute("fileServerUrl", fileServerUrl);
 		//return new ModelAndView("/userspace/profile", "userModel", model);
-		return new ModelAndView("/userspace/profile", "userModel", model);
+		return new ModelAndView("userspace/profile", "userModel", model);
 	}
 
 	/**
