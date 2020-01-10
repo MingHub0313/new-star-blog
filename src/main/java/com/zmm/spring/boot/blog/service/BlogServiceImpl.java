@@ -96,7 +96,7 @@ public class BlogServiceImpl implements BlogService {
 		blogRepository.save(blog);
 		//更新 Es 中的 阅读次数
 		EsBlog esBlog = esBlogService.getEsBlogByBlogId(id);
-		esBlog.setReadSize(blog.getReadSize()+1);
+		esBlog.setReadSize(blog.getReadSize());
 		esBlogService.updateEsBlog(esBlog);
 
 	}
